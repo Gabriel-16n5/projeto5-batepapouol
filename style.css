@@ -1,6 +1,7 @@
 body{
     max-width: 375px;
     background-color: #E5E5E5;
+    font-family:'Roboto';
 }
 
 .header{
@@ -11,6 +12,7 @@ body{
     align-items: center;
     background-color: white;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
 }
 
 .footer{
@@ -55,8 +57,38 @@ img{
     outline:none;
     border: none;
     font-size: 18px;
-    font-family:'Roboto';
     font-style: italic;
     font-weight: 500;
 
+}
+
+.containerPrincipal{
+    display: flex;
+}
+
+.mensagem{
+    display: flex;
+    align-items: center;
+    background-color: #DCDCDC;
+    width: 375px;
+    height: 40px;
+    border-radius: 2px;
+    margin-left: 10px;
+}
+
+.tempo{
+    margin-right: 5px;
+    color: grey;
+    font-size: 14px;
+    
+}
+
+.user{
+    font-size: 16px;
+    font-weight: 700;
+
+}
+
+.entraNaSala{
+    margin-left: 5px;
 }
