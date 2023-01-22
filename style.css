@@ -65,6 +65,10 @@ img{
 .containerPrincipal{
     display: flex;
     flex-direction: column;
+    margin-bottom: 90px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    padding-bottom: 80px;
 }
 
 .mensagem{
@@ -74,7 +78,10 @@ img{
     width: 375px;
     height: 40px;
     border-radius: 2px;
-    margin-left: 10px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .tempo{
@@ -97,4 +104,34 @@ img{
 .para{
     font-size: 16px;
     font-weight: 700;
+}
+
+.padrao{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    width: 375px;
+    height: 40px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.reservado{
+    background-color: pink;
+    display: flex;
+    align-items: center;
+    width: 375px;
+    height: 40px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.box{
+    box-sizing: border-box;
 }
