@@ -47,27 +47,9 @@ function manterOnline(){
 
 function dadosMensagens(dadosBrutos){
     dadosProcessados = dadosBrutos.data;
-    carregarMensagensDoServidor();
-}
-
-function escreverNaSalaQuemEntrou(){
-    let msg = document.querySelector('.containerPrincipal');
- /*   
-    msg.innerHTML = 
-`
-    <div class="mensagem">
-        <div class="tempo">${dadosProcessados[99].time}</div>
-        <div class="user">${dadosProcessados[99].from}</div>
-        <div class="entraNaSala">${dadosProcessados[99].text}</div>
-    </div>
- `
- */
-}
-
-function carregarMensagensDoServidor(){
     histórico = document.querySelector('.containerPrincipal');
     for(let i = 0; i<dadosProcessados.length;i++){
-        if(dadosProcessados[i].text == ('entra na sala...')||('sai da sala...')){
+        if(dadosProcessados[i].text === "entra na sala..."){
             histórico.innerHTML +=
             `
                 <div data-test="message" class="mensagem box">
@@ -77,8 +59,30 @@ function carregarMensagensDoServidor(){
                 </div>
             `
             scroll();
-        }
-        else if(dadosProcessados[i].text != ('sai da sala...')||('entra na sala...')){
+            
+        } else if(dadosProcessados[i].text === "sai da sala..."){
+            histórico.innerHTML +=
+            `
+                <div data-test="message" class="mensagem box">
+                    <div class="tempo">${dadosProcessados[i].time}</div>
+                    <div class="user">${dadosProcessados[i].from}</div>
+                    <div class="entraNaSala">${dadosProcessados[i].text}</div>
+                </div>
+            `
+            scroll();
+            
+        } else if(dadosProcessados[i].text != "sai da sala..."){
+            histórico.innerHTML +=
+            `
+                <div data-test="message" class="padrao box">
+                    <div class="tempo">${dadosProcessados[i].time}</div>
+                    <div class="user">${dadosProcessados[i].from}</div>
+                    <div class="para">&nbsppara&nbsp${dadosProcessados[i].to}:</div>
+                    <div class="entraNaSala">${dadosProcessados[i].text}</div>
+                </div>
+            `
+            scroll();
+        } else if(dadosProcessados[i].text != "entra na sala..."){
         histórico.innerHTML +=
         `
             <div data-test="message" class="padrao box">
@@ -89,8 +93,7 @@ function carregarMensagensDoServidor(){
             </div>
         `
         scroll();
-        }
-        else if(dadosProcessados[i].type == ('private_message')){
+        } else if(dadosProcessados[i].type == ('private_message')){
             histórico.innerHTML +=
             `
                 <div data-test="message" class="reservado box">
@@ -101,29 +104,27 @@ function carregarMensagensDoServidor(){
                 </div>
             `
             scroll();
-        }/*else{
-        histórico.innerHTML +=
-        `
-            <div data-test="message" class="mensagem box">
-                <div class="tempo">${dadosProcessados[i].time}</div>
-                <div class="user">${dadosProcessados[i].from}</div>
-                <div class="entraNaSala">${dadosProcessados[i].text}</div>
-            </div>
-        `
-        }*/
+        }
     }
     controle = dadosProcessados[99].time;
     setInterval(atualizarChat, 3000);
+    //carregarMensagensDoServidor();
+}
+
+function escreverNaSalaQuemEntrou(){
+    let msg = document.querySelector('.containerPrincipal');
+}
+
+function carregarMensagensDoServidor(){
+    
 }
 
 function atualizarChat(){
     dadosAtualizados = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
     dadosAtualizados.then(dadosMensagensAtualizados);
-
-
     histórico = document.querySelector('.containerPrincipal');
         if(controle != dadosProcessados[99].time){
-            if(dadosProcessados[99].text == ('entra na sala...')||('sai da sala...')){
+            if(dadosProcessados[99].text == 'entra na sala...'){
                 histórico.innerHTML +=
                 `
                     <div data-test="message" class="mensagem box">
@@ -134,8 +135,18 @@ function atualizarChat(){
                 `
                 controle = dadosProcessados[99].time;
                 scroll();
-            }
-            else if(dadosProcessados[99].text != ('sai da sala...')||('entra na sala...')){
+            } else if(dadosProcessados[99].text == 'sai da sala...'){
+                histórico.innerHTML +=
+                `
+                    <div data-test="message" class="mensagem box">
+                        <div class="tempo">${dadosProcessados[99].time}</div>
+                        <div class="user">${dadosProcessados[99].from}</div>
+                        <div class="entraNaSala">${dadosProcessados[99].text}</div>
+                    </div>
+                `
+                controle = dadosProcessados[99].time;
+                scroll();
+            } else if(dadosProcessados[99].text != 'sai da sala...'){
             histórico.innerHTML +=
             `
                 <div data-test="message" class="padrao box">
@@ -147,8 +158,19 @@ function atualizarChat(){
             `
             controle = dadosProcessados[99].time;
             scroll();
-            }
-            else if(dadosProcessados[99].type == ('private_message')){
+            }  else if(dadosProcessados[99].text != 'entra na sala...'){
+                histórico.innerHTML +=
+                `
+                    <div data-test="message" class="padrao box">
+                        <div class="tempo">${dadosProcessados[99].time}</div>
+                        <div class="user">${dadosProcessados[99].from}</div>
+                        <div class="para">&nbsppara&nbsp${dadosProcessados[99].to}:</div>
+                        <div class="entraNaSala">${dadosProcessados[99].text}</div>
+                    </div>
+                `
+                controle = dadosProcessados[99].time;
+                scroll();
+                } else if(dadosProcessados[99].type == ('private_message')){
                 histórico.innerHTML +=
                 `
                     <div data-test="message" class="reservado box">
@@ -160,16 +182,7 @@ function atualizarChat(){
                 `
                 controle = dadosProcessados[99].time;
                 scroll();
-            }/*else{
-            histórico.innerHTML +=
-            `
-                <div data-test="message" class="mensagem box">
-                    <div class="tempo">${dadosProcessados[99].time}</div>
-                    <div class="user">${dadosProcessados[99].from}</div>
-                    <div class="entraNaSala">${dadosProcessados[99].text}</div>
-                </div>
-            `
-            }*/
+            }
         }
     console.log('att chat');
 }
