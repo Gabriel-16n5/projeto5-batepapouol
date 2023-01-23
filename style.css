@@ -19,6 +19,7 @@ body{
     width: 375px;
     height: 80px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
     align-items: center;
@@ -50,12 +51,16 @@ img{
     height: 35px;
     color: black;
     box-sizing: border-box;
-    transform: rotate(315deg);
+    box-sizing: border-box;
+    padding-left: 50px;
+    padding-top: 25px;
+    transform: rotate(-25deg);
 }
 
 .chat{
     outline:none;
     border: none;
+    display: flex;
     font-size: 18px;
     font-style: italic;
     font-weight: 500;
@@ -134,4 +139,41 @@ img{
 
 .box{
     box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.baixo {
+    
+    position: absolute;
+    z-index: 1000;
+    bottom:0;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+    
+}
+
+#mensagem-baixo{
+    outline:none;
+    border: none;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 500;
 }

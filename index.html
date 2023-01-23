@@ -20,11 +20,16 @@
 
     <div class="footer">
         <div class="chat"> 
-            <form id="post">
-                <input class="chat" type="text" name="mensagem" id="mensagem" placeholder="Escreva aqui..."/>
-            </form>
+            <div class="chat">
+                <form class = "form-input">
+                    <input type="text" id = 'mensagem-baixo' placeholder = "Escreva aqui..." autocomplete = "off">
+                </form>
+            </div>
+            
+            <div class = "send">
+                <ion-icon onclick = 'enviandoMensagem()' class = 'botao-enviar send' name="send"></ion-icon>
+            </div>
         </div>
-        <ion-icon class="send" name="send"></ion-icon>
     </div>
 
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>

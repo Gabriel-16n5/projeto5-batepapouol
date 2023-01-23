@@ -8,7 +8,7 @@ let dadosAtualizados;
 let controle;
 let autoScroll;
 let histórico;
-let mensagemChat;
+let mensagemChat = {};
 let mensagemChatObj;
 
 cadastroUser();
@@ -174,6 +174,20 @@ function dadosMensagensAtualizados(dadosBrutos){
 }
 
 function enviarMensagem(){
-    mensagemChat = 
     promiseChat = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', mensagemChat);
+}
+
+function enviandoMensagem(){
+    mensagemChat.from = userName.name;
+    mensagemChat.text = document.querySelector('#mensagem-baixo').value;
+    mensagemChat.to = 'Todos';
+    mensagemChat.type = "message";
+    promiseChat = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', mensagemChat);
+    promiseChat.then(atualizarChat);
+    promiseChat.catch(releoad);
+
+}
+
+function releoad(){
+    window.location.reload();
 }
