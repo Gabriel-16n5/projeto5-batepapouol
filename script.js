@@ -68,7 +68,7 @@ function escreverNaSalaQuemEntrou(){
 function carregarMensagensDoServidor(){
     histórico = document.querySelector('.containerPrincipal');
     for(let i = 0; i<dadosProcessados.length;i++){
-        if(dadosProcessados[i].text == 'entra na sala...'){
+        if(dadosProcessados[i].text == ('entra na sala...')||('sai da sala...')){
             histórico.innerHTML +=
             `
                 <div data-test="message" class="mensagem box">
@@ -77,6 +77,7 @@ function carregarMensagensDoServidor(){
                     <div class="entraNaSala">${dadosProcessados[i].text}</div>
                 </div>
             `
+            scroll();
         }
         else if(dadosProcessados[i].text != ('sai da sala...')||('entra na sala...')){
         histórico.innerHTML +=
@@ -88,6 +89,7 @@ function carregarMensagensDoServidor(){
                 <div class="entraNaSala">${dadosProcessados[i].text}</div>
             </div>
         `
+        scroll();
         }
         else if(dadosProcessados[i].type == ('private_message')){
             histórico.innerHTML +=
@@ -99,7 +101,8 @@ function carregarMensagensDoServidor(){
                     <div class="entraNaSala">${dadosProcessados[i].text}</div>
                 </div>
             `
-        }else{
+            scroll();
+        }/*else{
         histórico.innerHTML +=
         `
             <div data-test="message" class="mensagem box">
@@ -108,8 +111,9 @@ function carregarMensagensDoServidor(){
                 <div class="entraNaSala">${dadosProcessados[i].text}</div>
             </div>
         `
-        }
+        }*/
     }
+    controle = dadosProcessados[99].time;
     setInterval(atualizarChat, 3000);
 }
 
@@ -120,7 +124,7 @@ function atualizarChat(){
 
     histórico = document.querySelector('.containerPrincipal');
         if(controle != dadosProcessados[99].time){
-            if(dadosProcessados[99].text == 'entra na sala...'){
+            if(dadosProcessados[99].text == ('entra na sala...')||('sai da sala...')){
                 histórico.innerHTML +=
                 `
                     <div data-test="message" class="mensagem box">
@@ -129,6 +133,7 @@ function atualizarChat(){
                         <div class="entraNaSala">${dadosProcessados[99].text}</div>
                     </div>
                 `
+                controle = dadosProcessados[99].time;
                 scroll();
             }
             else if(dadosProcessados[99].text != ('sai da sala...')||('entra na sala...')){
@@ -141,8 +146,10 @@ function atualizarChat(){
                     <div class="entraNaSala">${dadosProcessados[99].text}</div>
                 </div>
             `
+            controle = dadosProcessados[99].time;
+            scroll();
             }
-            else if(dadosProcessados[99].type != ('todos')){
+            else if(dadosProcessados[99].type == ('private_message')){
                 histórico.innerHTML +=
                 `
                     <div data-test="message" class="reservado box">
@@ -152,7 +159,9 @@ function atualizarChat(){
                         <div class="entraNaSala">${dadosProcessados[99].text}</div>
                     </div>
                 `
-            }else{
+                controle = dadosProcessados[99].time;
+                scroll();
+            }/*else{
             histórico.innerHTML +=
             `
                 <div data-test="message" class="mensagem box">
@@ -161,10 +170,7 @@ function atualizarChat(){
                     <div class="entraNaSala">${dadosProcessados[99].text}</div>
                 </div>
             `
-            }
-            controle = dadosProcessados[99].time;
-            autoScroll = document.querySelector('.containerPrincipal');
-            autoScroll.scrollIntoView(false);
+            }*/
         }
     console.log('att chat');
 }
@@ -190,4 +196,9 @@ function enviandoMensagem(){
 
 function releoad(){
     window.location.reload();
+}
+
+function scroll(){
+    autoScroll = document.querySelector('.containerPrincipal');
+    autoScroll.scrollIntoView(false);
 }
