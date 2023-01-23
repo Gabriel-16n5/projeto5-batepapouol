@@ -22,7 +22,6 @@ function cadastroUser(){
 function deuBom(){
     alert('deu bom');
     entrarNaSala();
-    setInterval(manterOnline, 5000);
 }
 
 function deuRuim(){
@@ -31,9 +30,9 @@ function deuRuim(){
 }
 
 function entrarNaSala(){
+    setInterval(manterOnline, 5000);
     dados = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
     dados.then(dadosMensagens);
-    console.log('promessa de pedido das mensagens')
 }
 
 function usuarioEmUso(){
