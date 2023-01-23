@@ -22,12 +22,12 @@
         <div class="chat"> 
             <div class="chat">
                 <form class = "form-input">
-                    <input type="text" id = 'mensagem-baixo' placeholder = "Escreva aqui..." autocomplete = "off">
+                    <input data-test="input-message" type="text" id = 'mensagem-baixo' placeholder = "Escreva aqui..." autocomplete = "off">
                 </form>
             </div>
             
-            <div class = "send">
-                <ion-icon onclick = 'enviandoMensagem()' class = 'botao-enviar send' name="send"></ion-icon>
+            <div  class = "send">
+                <ion-icon  data-test="input-message" onclick = 'enviandoMensagem()' class = 'botao-enviar send' name="send"></ion-icon>
             </div>
         </div>
     </div>

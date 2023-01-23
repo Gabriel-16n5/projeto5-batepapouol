@@ -71,7 +71,7 @@ function carregarMensagensDoServidor(){
         if(dadosProcessados[i].text == 'entra na sala...'){
             histórico.innerHTML +=
             `
-                <div class="mensagem box">
+                <div data-test="message" class="mensagem box">
                     <div class="tempo">${dadosProcessados[i].time}</div>
                     <div class="user">${dadosProcessados[i].from}</div>
                     <div class="entraNaSala">${dadosProcessados[i].text}</div>
@@ -81,7 +81,7 @@ function carregarMensagensDoServidor(){
         else if(dadosProcessados[i].text != ('sai da sala...')||('entra na sala...')){
         histórico.innerHTML +=
         `
-            <div class="padrao box">
+            <div data-test="message" class="padrao box">
                 <div class="tempo">${dadosProcessados[i].time}</div>
                 <div class="user">${dadosProcessados[i].from}</div>
                 <div class="para">&nbsppara&nbsp${dadosProcessados[i].to}:</div>
@@ -92,7 +92,7 @@ function carregarMensagensDoServidor(){
         else if(dadosProcessados[i].type == ('private_message')){
             histórico.innerHTML +=
             `
-                <div class="reservado box">
+                <div data-test="message" class="reservado box">
                     <div class="tempo">${dadosProcessados[i].time}</div>
                     <div class="user">${dadosProcessados[i].from}</div>
                     <div class="para">&nbsppara&nbsp${dadosProcessados[i].to}:</div>
@@ -102,7 +102,7 @@ function carregarMensagensDoServidor(){
         }else{
         histórico.innerHTML +=
         `
-            <div class="mensagem box">
+            <div data-test="message" class="mensagem box">
                 <div class="tempo">${dadosProcessados[i].time}</div>
                 <div class="user">${dadosProcessados[i].from}</div>
                 <div class="entraNaSala">${dadosProcessados[i].text}</div>
@@ -123,7 +123,7 @@ function atualizarChat(){
             if(dadosProcessados[99].text == 'entra na sala...'){
                 histórico.innerHTML +=
                 `
-                    <div class="mensagem box">
+                    <div data-test="message" class="mensagem box">
                         <div class="tempo">${dadosProcessados[99].time}</div>
                         <div class="user">${dadosProcessados[99].from}</div>
                         <div class="entraNaSala">${dadosProcessados[99].text}</div>
@@ -134,7 +134,7 @@ function atualizarChat(){
             else if(dadosProcessados[99].text != ('sai da sala...')||('entra na sala...')){
             histórico.innerHTML +=
             `
-                <div class="padrao box">
+                <div data-test="message" class="padrao box">
                     <div class="tempo">${dadosProcessados[99].time}</div>
                     <div class="user">${dadosProcessados[99].from}</div>
                     <div class="para">&nbsppara&nbsp${dadosProcessados[99].to}:</div>
@@ -145,7 +145,7 @@ function atualizarChat(){
             else if(dadosProcessados[99].type != ('todos')){
                 histórico.innerHTML +=
                 `
-                    <div class="reservado box">
+                    <div data-test="message" class="reservado box">
                         <div class="tempo">${dadosProcessados[99].time}</div>
                         <div class="user">${dadosProcessados[99].from}</div>
                         <div class="para">&nbsppara&nbsp${dadosProcessados[99].to}:</div>
@@ -155,7 +155,7 @@ function atualizarChat(){
             }else{
             histórico.innerHTML +=
             `
-                <div class="mensagem box">
+                <div data-test="message" class="mensagem box">
                     <div class="tempo">${dadosProcessados[99].time}</div>
                     <div class="user">${dadosProcessados[99].from}</div>
                     <div class="entraNaSala">${dadosProcessados[99].text}</div>
